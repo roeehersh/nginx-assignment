@@ -5,7 +5,6 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                git 'https://github.com/roeehersh/nginx-assignment.git'
                 echo "current build number: ${currentBuild.number}"
                 dir("nginx") {
                     sh "docker build -t roeehersh/nginx-assignment:${currentBuild.number} --build-arg JENKINS_BUILD_NO=${currentBuild.number} ./"
