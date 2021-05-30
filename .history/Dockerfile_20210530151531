@@ -1,0 +1,7 @@
+FROM nginx:1.21.0
+
+ARG JENKINS_BUILD_NO=0
+
+WORKDIR /usr/share/nginx/html
+ADD ./template.html /usr/share/nginx/html/template.html
+RUN sed 's/{{build_num}}/${JENKINS_BUILD_NO}/g' test.html > test2.html
